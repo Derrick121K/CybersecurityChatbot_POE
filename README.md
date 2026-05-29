@@ -1,5 +1,10 @@
 ﻿# 🛡️ Cybersecurity Chatbot - Part 2
-https://github.com/Derrick121K/CybersecurityChatbot_part2/screenshot.png
+
+ <p align="center">
+  <img src="./screenshot.png" width="900" />
+</p>
+
+
 ## Student Information
 - **Name:** Derrick Kapa
 - **Course:** PROG6221 Programming 2A
