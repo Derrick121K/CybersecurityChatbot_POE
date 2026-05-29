@@ -60,6 +60,9 @@
 1. Clone the repository:
    ```bash
    git clone https://github.com/Derrick121K/CybersecurityChatbot_part2.git
+   
+## 🎥 Demo Video
+[![Watch Demo](https://img.youtube.com/vi/2XG-eJhZgfI/maxresdefault.jpg)](https://youtu.be/2XG-eJhZgfI)
 
 ## CI/CD Status
 [![.NET CI](https://github.com/Derrick121K/CybersecurityChatbot_part2/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Derrick121K/CybersecurityChatbot_part2/actions/workflows/dotnet.yml)
