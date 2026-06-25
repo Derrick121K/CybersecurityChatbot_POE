@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Numerics;
 
 namespace CybersecurityChatbot;
 
@@ -81,7 +79,7 @@ public class ChatBot
     }
 
     // ===== PART 3: NEW METHODS =====
-    private string ProcessPart3Input(string input)
+    private string? ProcessPart3Input(string input)
     {
         // 1. Detect intent using NLP
         string intent = _nlpProcessor.DetectIntent(input);
@@ -134,7 +132,7 @@ public class ChatBot
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📋 TASK ASSISTANT (Part 3)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  • Add task: ""add task -Review privacy settings""
+  • Add task: ""add task - Review privacy settings""
   • View tasks: ""view tasks""
   • Complete task: ""complete 1""
   • Delete task: ""delete 1""
@@ -174,10 +172,35 @@ What would you like to do?";
             return "Please type something. I'm here to help you with cybersecurity!";
         }
 
-        // ===== STEP 1: Get user's name =====
+        string trimmedInput = input.Trim();
+
+        // ===== STEP 1: Get user's name (with command detection) =====
         if (_awaitingName)
         {
-            _memoryStore.UserName = input.Trim();
+            // Check if user typed a command instead of their name
+            string[] commandTriggers = new[] { "help", "start quiz", "view tasks", "add task", "show activity log", "exit", "bye", "commands", "what can you do" };
+            bool isCommand = false;
+            foreach (var cmd in commandTriggers)
+            {
+                if (trimmedInput.ToLower().Contains(cmd))
+                {
+                    isCommand = true;
+                    break;
+                }
+            }
+
+            if (isCommand)
+            {
+                // Process the command first, then ask for name again
+                var response = ProcessPart3Input(input);
+                if (response != null)
+                {
+                    return response + "\n\n⚠️ Please enter your name first, then try the command again.";
+                }
+            }
+
+            // Set the name
+            _memoryStore.UserName = trimmedInput;
             _awaitingName = false;
             _storage.LogAction("User identified", $"Name: {_memoryStore.UserName}");
             return $"Nice to meet you, {_memoryStore.UserName}! 🎉\n\nI can help you with:\n" +
