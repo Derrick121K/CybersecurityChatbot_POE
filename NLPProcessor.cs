@@ -82,7 +82,6 @@ public class NLPProcessor
 
     public string ExtractTaskTitle(string input)
     {
-        // Remove common prefixes
         var prefixes = new[] {
             "add task", "create task", "new task", "add a task", "create a task",
             "i need to", "i should", "remind me to", "set a reminder",
@@ -99,7 +98,6 @@ public class NLPProcessor
             }
         }
 
-        // Remove reminder phrases
         result = Regex.Replace(result, @"remind me in \d+ days?", "", RegexOptions.IgnoreCase);
         result = Regex.Replace(result, @"in \d+ days?", "", RegexOptions.IgnoreCase);
         result = result.Replace("about", "").Replace("to", "").Trim();
@@ -114,7 +112,7 @@ public class NLPProcessor
         {
             return int.Parse(match.Groups[1].Value);
         }
-        return 7; // Default
+        return 7;
     }
 
     public bool HasReminderRequest(string input)
