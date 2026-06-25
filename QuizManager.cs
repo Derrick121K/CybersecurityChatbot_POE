@@ -241,13 +241,11 @@ public class QuizManager
     {
         answer = answer.ToUpper().Trim();
 
-        // Check for letter answers
         if (answer.Length == 1 && answer[0] >= 'A' && answer[0] <= 'D')
         {
             return answer[0] - 'A';
         }
 
-        // Check for full answer matching
         for (int i = 0; i < question.Options.Count; i++)
         {
             if (question.Options[i].ToUpper().Contains(answer) || answer.Contains(question.Options[i].ToUpper()))
