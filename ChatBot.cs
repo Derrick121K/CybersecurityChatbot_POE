@@ -29,18 +29,15 @@ public class ChatBot
     // ===== CONSTRUCTOR =====
     public ChatBot()
     {
-        // Part 2: Initialize existing components
         _keywordResponder = new KeywordResponder();
         _sentimentDetector = new SentimentDetector();
         _memoryStore = new MemoryStore();
 
-        // Part 3: Initialize new components
         _storage = new DataStorage();
         _taskManager = new TaskManager(_storage);
         _quizManager = new QuizManager(_storage);
         _nlpProcessor = new NLPProcessor();
 
-        // Log the startup
         _storage.LogAction("Chatbot initialized", "Application started with Part 3 features");
     }
 
@@ -50,20 +47,30 @@ public class ChatBot
         return "Hello! Welcome to the Cybersecurity Chatbot! 🤖\n\nWhat's your name?";
     }
 
+    // ===== PROFESSIONAL ASCII ART - FIXED =====
     public string GetAsciiArt()
     {
         return @"
-    ╔═══════════════════════════════════════════════════════════════╗
-    ║     ██████╗██╗   ██╗██████╗ ███████╗██████╗ ██████╗  ██████╗ ████████╗║
-    ║    ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔═══██╗╚══██╔══╝║
-    ║    ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝██████╔╝██║   ██║   ██║   ║
-    ║    ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗██╔══██╗██║   ██║   ██║   ║
-    ║    ╚██████╗   ██║   ██████╔╝███████╗██║  ██║██████╔╝╚██████╔╝   ██║   ║
-    ║     ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝  ╚═════╝    ╚═╝   ║
-    ║                                                                       ║
-    ║              C Y B E R S E C U R I T Y   O U T B O X                 ║
-    ║                        v3.0 - Part 3 Ready                            ║
-    ╚═══════════════════════════════════════════════════════════════════════╝";
+    ╔═══════════════════════════════════════════════════════════════════╗
+    ║                                                                   ║
+    ║          ██████╗██╗   ██╗██████╗ ███████╗██████╗                  ║
+    ║         ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗                 ║
+    ║         ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝                 ║
+    ║         ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗                 ║
+    ║         ╚██████╗   ██║   ██████╔╝███████╗██║  ██║                 ║
+    ║          ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝                 ║
+    ║                                                                   ║
+    ║          ███████╗ ██████╗ ██╗   ██╗████████╗██████╗  ██████╗ ██╗  ║
+    ║          ██╔════╝██╔═══██╗╚██╗ ██╔╝╚══██╔══╝██╔══██╗██╔═══██╗╚██╗ ║
+    ║          ███████╗██║   ██║ ╚████╔╝    ██║   ██████╔╝██║   ██║ ╚██╗║
+    ║          ╚════██║██║   ██║  ╚██╔╝     ██║   ██╔══██╗██║   ██║ ██╔╝║
+    ║          ███████║╚██████╔╝   ██║      ██║   ██║  ██║╚██████╔╝██╔╝ ║
+    ║          ╚══════╝ ╚═════╝    ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ║
+    ║                                                                   ║
+    ║                    🔐  CYBERSECURITY OUTBOX  🔐                    ║
+    ║                          Version 3.0                               ║
+    ║                                                                   ║
+    ╚═══════════════════════════════════════════════════════════════════╝";
     }
 
     private string ExtractTopic(string input)
@@ -78,16 +85,45 @@ public class ChatBot
         return "cybersecurity";
     }
 
+    public string GetTutorial()
+    {
+        return @"
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║              📚  CYBERSECURITY OUTBOX - TUTORIAL                  ║
+║                                                                   ║
+║  🎯 STEP 1: INTRODUCE YOURSELF                                    ║
+║      Type your name when asked                                    ║
+║                                                                   ║
+║  📋 STEP 2: MANAGE TASKS                                          ║
+║      • Add:    'add task - Review privacy settings'               ║
+║      • View:   'view tasks'                                       ║
+║      • Complete: 'complete 1'                                     ║
+║      • Delete: 'delete 1'                                         ║
+║                                                                   ║
+║  🎮 STEP 3: PLAY THE QUIZ                                         ║
+║      • Start:  'start quiz'                                       ║
+║      • Answer: 'A', 'B', 'C', or 'D'                             ║
+║                                                                   ║
+║  💬 STEP 4: ASK QUESTIONS                                         ║
+║      • 'tell me about passwords'                                  ║
+║      • 'tell me about phishing'                                   ║
+║      • 'tell me more' (another tip)                               ║
+║                                                                   ║
+║  📊 STEP 5: VIEW ACTIVITY LOG                                     ║
+║      • 'show activity log'                                        ║
+║                                                                   ║
+║  ❌ EXIT: 'exit' or 'bye'                                         ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝";
+    }
+
     // ===== PART 3: NEW METHODS =====
     private string? ProcessPart3Input(string input)
     {
-        // 1. Detect intent using NLP
         string intent = _nlpProcessor.DetectIntent(input);
-
-        // 2. Log the interaction
         _storage.LogAction($"Intent detected: {intent}", $"Input: {input}");
 
-        // 3. Handle based on intent
         switch (intent)
         {
             case "add_task":
@@ -103,7 +139,6 @@ public class ChatBot
                 return _taskManager.DeleteTask(input);
 
             case "quiz":
-                // Check if user wants to start or is in the middle
                 if (input.ToLower().Contains("start") || input.ToLower().Contains("begin"))
                 {
                     return _quizManager.StartQuiz();
@@ -121,52 +156,45 @@ public class ChatBot
                 return GetHelpMessage();
 
             default:
-                return null; // Let Part 2 handle it
+                return null;
         }
     }
 
     private string GetHelpMessage()
     {
-        return $@"🔧 {_memoryStore.UserName}, here are ALL my features:
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 TASK ASSISTANT (Part 3)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  • Add task: ""add task - Review privacy settings""
-  • View tasks: ""view tasks""
-  • Complete task: ""complete 1""
-  • Delete task: ""delete 1""
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎮 QUIZ GAME (Part 3)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  • Start quiz: ""start quiz""
-  • Answer: ""A"", ""B"", ""C"", or ""D""
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📊 ACTIVITY LOG (Part 3)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  • Show log: ""show activity log""
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💬 CHAT FEATURES (Part 2)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  • Ask about: passwords, phishing, privacy, scams, malware, 2FA
-  • ""tell me more"" - Get another tip
-  • ""I'm interested in [topic]"" - I'll remember it
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-❌ EXIT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  • ""exit"" or ""bye"" - End conversation
-
-What would you like to do?";
+        return $@"╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║  🔧 {_memoryStore.UserName}, here are ALL my features:                      ║
+║                                                                   ║
+║  📋 TASK ASSISTANT (Part 3)                                       ║
+║      • Add task:    'add task - Review privacy settings'          ║
+║      • View tasks:  'view tasks'                                  ║
+║      • Complete:    'complete 1'                                  ║
+║      • Delete:      'delete 1'                                    ║
+║                                                                   ║
+║  🎮 QUIZ GAME (Part 3)                                            ║
+║      • Start quiz:  'start quiz'                                  ║
+║      • Answer:      'A', 'B', 'C', or 'D'                        ║
+║                                                                   ║
+║  📊 ACTIVITY LOG (Part 3)                                         ║
+║      • Show log:    'show activity log'                           ║
+║                                                                   ║
+║  💬 CHAT FEATURES (Part 2)                                        ║
+║      • Ask about: passwords, phishing, privacy, scams, malware, 2FA ║
+║      • 'tell me more' - Get another tip                           ║
+║      • 'I'm interested in [topic]' - I'll remember it             ║
+║                                                                   ║
+║  📚 TUTORIAL                                                      ║
+║      • Type 'tutorial' for a step-by-step guide                   ║
+║                                                                   ║
+║  ❌ EXIT: 'exit' or 'bye'                                         ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝";
     }
 
     // ===== MAIN PROCESSING METHOD =====
     public string ProcessInput(string input)
     {
-        // Check for empty input
         if (string.IsNullOrWhiteSpace(input))
         {
             return "Please type something. I'm here to help you with cybersecurity!";
@@ -174,11 +202,10 @@ What would you like to do?";
 
         string trimmedInput = input.Trim();
 
-        // ===== STEP 1: Get user's name (with command detection) =====
+        // ===== STEP 1: Get user's name =====
         if (_awaitingName)
         {
-            // Check if user typed a command instead of their name
-            string[] commandTriggers = new[] { "help", "start quiz", "view tasks", "add task", "show activity log", "exit", "bye", "commands", "what can you do" };
+            string[] commandTriggers = new[] { "help", "start quiz", "view tasks", "add task", "show activity log", "exit", "bye", "commands", "tutorial" };
             bool isCommand = false;
             foreach (var cmd in commandTriggers)
             {
@@ -191,7 +218,6 @@ What would you like to do?";
 
             if (isCommand)
             {
-                // Process the command first, then ask for name again
                 var response = ProcessPart3Input(input);
                 if (response != null)
                 {
@@ -199,26 +225,55 @@ What would you like to do?";
                 }
             }
 
-            // Set the name
             _memoryStore.UserName = trimmedInput;
             _awaitingName = false;
             _storage.LogAction("User identified", $"Name: {_memoryStore.UserName}");
-            return $"Nice to meet you, {_memoryStore.UserName}! 🎉\n\nI can help you with:\n" +
-                   $"• Passwords 🔐\n• Phishing 🎣\n• Privacy 🛡️\n• Scams ⚠️\n• Malware 🦠\n• 2FA 📱\n\n" +
-                   $"Try: 'add task', 'start quiz', or ask me a cybersecurity question!\n" +
-                   $"Type 'help' for all commands.";
+
+            return $"Nice to meet you, {_memoryStore.UserName}! 🎉\n\n" +
+                   GetTutorial() + "\n\n" +
+                   $"Type 'help' anytime to see all commands.";
         }
 
         string lowerInput = input.ToLower();
 
-        // ===== STEP 2: Check Part 3 features FIRST =====
+        // ===== STEP 2: TUTORIAL =====
+        if (lowerInput == "tutorial")
+        {
+            return GetTutorial();
+        }
+
+        // ===== STEP 3: Check if quiz is active FIRST =====
+        if (_quizManager.IsQuizActive)
+        {
+            string trimmed = input.Trim().ToUpper();
+            // Check if it's a valid quiz answer (A, B, C, D)
+            bool isValidAnswer = false;
+            foreach (var letter in new[] { "A", "B", "C", "D" })
+            {
+                if (trimmed == letter || trimmed.Contains(letter))
+                {
+                    isValidAnswer = true;
+                    break;
+                }
+            }
+
+            if (isValidAnswer)
+            {
+                return _quizManager.SubmitAnswer(input);
+            }
+
+            // If quiz active but not a valid answer
+            return "❌ Please answer with A, B, C, or D for the quiz question!";
+        }
+
+        // ===== STEP 4: Check Part 3 features =====
         var part3Response = ProcessPart3Input(input);
         if (part3Response != null)
         {
             return part3Response;
         }
 
-        // ===== STEP 3: Follow-up requests (Part 2) =====
+        // ===== STEP 5: Follow-up requests (Part 2) =====
         if (lowerInput.Contains("tell me more") || lowerInput.Contains("explain more") ||
             lowerInput.Contains("another tip") || lowerInput.Contains("continue"))
         {
@@ -232,7 +287,7 @@ What would you like to do?";
             return "What topic would you like me to tell you more about? Try asking about passwords, phishing, or privacy!";
         }
 
-        // ===== STEP 4: Special commands =====
+        // ===== STEP 6: Special commands =====
         if (lowerInput == "help" || lowerInput == "what can you do" || lowerInput == "commands")
         {
             return GetHelpMessage();
@@ -256,7 +311,7 @@ What would you like to do?";
             return $"Goodbye {_memoryStore.UserName}! Stay safe online! 🛡️\n\nRemember: Think before you click!";
         }
 
-        // ===== STEP 5: Store favorite topic =====
+        // ===== STEP 7: Store favorite topic =====
         if (lowerInput.Contains("interested in"))
         {
             string[] words = input.Split(' ');
@@ -275,7 +330,7 @@ What would you like to do?";
             }
         }
 
-        // ===== STEP 6: Sentiment Detection + Keyword Recognition =====
+        // ===== STEP 8: Sentiment Detection + Keyword Recognition =====
         Sentiment detectedSentiment = _sentimentDetector.Detect(input);
         string sentimentResponse = _sentimentDetector.GetSentimentResponse(detectedSentiment);
 
@@ -293,7 +348,7 @@ What would you like to do?";
             return personalizedOpener + keywordResponse;
         }
 
-        // ===== STEP 7: Fallback response =====
+        // ===== STEP 9: Fallback response =====
         string fallback = _fallbackResponses[_random.Next(_fallbackResponses.Length)];
         _storage.LogAction("Fallback response used", $"Input: {input}");
         return fallback;
