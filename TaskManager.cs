@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace CybersecurityChatbot;
 
@@ -23,17 +24,11 @@ public class TaskManager
         // Check for reminder
         if (input.ToLower().Contains("remind me in"))
         {
-            var words = input.Split(' ');
-            for (int i = 0; i < words.Length; i++)
+            var match = Regex.Match(input, @"(\d+)\s*(day|days)");
+            if (match.Success)
             {
-                if (int.TryParse(words[i], out int days) && i + 1 < words.Length)
-                {
-                    if (words[i + 1].ToLower().Contains("day"))
-                    {
-                        reminderDate = DateTime.Now.AddDays(days);
-                        break;
-                    }
-                }
+                int days = int.Parse(match.Groups[1].Value);
+                reminderDate = DateTime.Now.AddDays(days);
             }
         }
 
@@ -50,7 +45,7 @@ public class TaskManager
         }
 
         // Remove reminder phrases
-        cleaned = System.Text.RegularExpressions.Regex.Replace(cleaned, @"remind me in \d+ days?", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        cleaned = Regex.Replace(cleaned, @"remind me in \d+ days?", "", RegexOptions.IgnoreCase);
         cleaned = cleaned.Trim();
 
         if (!string.IsNullOrEmpty(cleaned))
