@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
@@ -33,6 +33,8 @@ public partial class Form1 : Form
     private Panel? _notificationPanel;
     private Label? _notificationLabel;
     private System.Windows.Forms.Timer? _notificationTimer;
+    private bool _asciiArtDisplayed = false;
+    private TextBox? _txtAsciiArt;
 
     public Form1()
     {
@@ -61,20 +63,20 @@ public partial class Form1 : Form
         this.MinimumSize = new Size(900, 600);
 
         // ===== MAIN CONTAINER =====
-        // Use TableLayoutPanel for better control
         var mainLayout = new TableLayoutPanel
         {
             Dock = DockStyle.Fill,
             ColumnCount = 2,
-            RowCount = 2,
+            RowCount = 3,  // Added a row for ASCII art
             BackColor = Color.FromArgb(18, 20, 34)
         };
         mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 180));
         mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-        mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 70));
-        mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+        mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 70));   // Header
+        mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 120));  // ASCII Art
+        mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));   // Chat
 
-        // ===== HEADER PANEL (Row 0, Column 0-1) =====
+        // ===== HEADER PANEL (Row 0) =====
         _headerPanel = new Panel
         {
             Dock = DockStyle.Fill,
@@ -125,16 +127,50 @@ public partial class Form1 : Form
         _headerPanel.Controls.Add(_btnTasks);
         _headerPanel.Controls.Add(_btnLog);
 
-        // ===== SIDE PANEL (Row 1, Column 0) =====
+        // ===== ASCII ART PANEL (Row 1) =====
+        var asciiPanel = new Panel
+        {
+            Dock = DockStyle.Fill,
+            BackColor = Color.FromArgb(18, 20, 34),
+            Padding = new Padding(10)
+        };
+        mainLayout.Controls.Add(asciiPanel, 0, 1);
+        mainLayout.SetColumnSpan(asciiPanel, 2);
+
+        // ASCII Art TextBox - Designed specifically for ASCII art
+        _txtAsciiArt = new TextBox
+        {
+            Dock = DockStyle.Fill,
+            Multiline = true,
+            ReadOnly = true,
+            BackColor = Color.FromArgb(18, 20, 34),
+            ForeColor = Color.Lime,
+            Font = new Font("Consolas", 9, FontStyle.Regular),
+            BorderStyle = BorderStyle.None,
+            Text = @"  ██████╗ ██╗   ██╗██████╗ ███████╗██████╗  ██████╗ ██╗   ██╗████████╗
+  ██╔═══╝ ╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗██╔═══██╗╚██╗ ██╔╝╚══██╔══╝
+  ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝██║   ██║ ╚████╔╝    ██║   
+  ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗██║   ██║  ╚██╔╝     ██║   
+  ╚██████╗   ██║   ██████╔╝███████╗██║  ██║╚██████╔╝   ██║      ██║   
+   ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝      ╚═╝   
+                                                                        
+        🔐  C Y B E R S E C U R I T Y   O U T B O X   🔐              
+                             v3.0",
+            Height = 110,
+            Cursor = Cursors.Default
+        };
+
+        asciiPanel.Controls.Add(_txtAsciiArt);
+
+        // ===== SIDE PANEL (Row 2, Column 0) =====
         _sidePanel = new Panel
         {
             Dock = DockStyle.Fill,
             BackColor = Color.FromArgb(24, 28, 48),
             Padding = new Padding(8, 10, 8, 10)
         };
-        mainLayout.Controls.Add(_sidePanel, 0, 1);
+        mainLayout.Controls.Add(_sidePanel, 0, 2);
 
-        // Side panel title
         var sideLabel = new Label
         {
             Text = "⚡ QUICK ACTIONS",
@@ -147,7 +183,6 @@ public partial class Form1 : Form
         };
         _sidePanel.Controls.Add(sideLabel);
 
-        // Quick buttons
         _btnQuickPassword = CreateSideButton("🔐 Passwords", "Tell me about passwords");
         _btnQuickPhishing = CreateSideButton("🎣 Phishing", "Tell me about phishing");
         _btnQuickPrivacy = CreateSideButton("🛡️ Privacy", "Tell me about privacy");
@@ -173,16 +208,16 @@ public partial class Form1 : Form
         _sidePanel.Controls.Add(_btnQuickPhishing);
         _sidePanel.Controls.Add(_btnQuickPassword);
 
-        // ===== CONTENT PANEL (Row 1, Column 1) =====
+        // ===== CONTENT PANEL (Row 2, Column 1) =====
         _contentPanel = new Panel
         {
             Dock = DockStyle.Fill,
             BackColor = Color.FromArgb(18, 20, 34),
             Padding = new Padding(10)
         };
-        mainLayout.Controls.Add(_contentPanel, 1, 1);
+        mainLayout.Controls.Add(_contentPanel, 1, 2);
 
-        // Chat Display (fills most of the space)
+        // ===== CHAT DISPLAY =====
         _rtxtChatDisplay = new RichTextBox
         {
             Dock = DockStyle.Fill,
@@ -195,7 +230,7 @@ public partial class Form1 : Form
             WordWrap = true
         };
 
-        // Input Panel (bottom)
+        // ===== INPUT PANEL =====
         _inputPanel = new Panel
         {
             Dock = DockStyle.Bottom,
@@ -235,7 +270,6 @@ public partial class Form1 : Form
         _inputPanel.Controls.Add(_txtUserInput);
         _inputPanel.Controls.Add(_btnSend);
 
-        // Add controls to content panel
         _contentPanel.Controls.Add(_rtxtChatDisplay);
         _contentPanel.Controls.Add(_inputPanel);
 
@@ -258,7 +292,6 @@ public partial class Form1 : Form
         };
         _notificationPanel.Controls.Add(_notificationLabel);
 
-        // ===== ADD MAIN LAYOUT TO FORM =====
         this.Controls.Add(mainLayout);
         this.Controls.Add(_notificationPanel);
 
@@ -359,11 +392,12 @@ public partial class Form1 : Form
         _rtxtChatDisplay.SelectionColor = color;
         _rtxtChatDisplay.AppendText(icon);
         _rtxtChatDisplay.SelectionColor = Color.White;
+        _rtxtChatDisplay.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
 
         for (int i = 0; i < message.Length; i++)
         {
             _rtxtChatDisplay.AppendText(message[i].ToString());
-            await Task.Delay(5);
+            await Task.Delay(3);
         }
         _rtxtChatDisplay.AppendText("\n");
         _rtxtChatDisplay.SelectionStart = _rtxtChatDisplay.Text.Length;
@@ -400,8 +434,25 @@ public partial class Form1 : Form
     {
         try
         {
-            string wavPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "greeting.wav");
-            if (File.Exists(wavPath))
+            string[] possiblePaths = new[]
+            {
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "greeting.wav"),
+                Path.Combine(Application.StartupPath, "greeting.wav"),
+                Path.Combine(Directory.GetCurrentDirectory(), "greeting.wav"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "greeting.wav")
+            };
+
+            string? wavPath = null;
+            foreach (var path in possiblePaths)
+            {
+                if (File.Exists(path))
+                {
+                    wavPath = path;
+                    break;
+                }
+            }
+
+            if (wavPath != null && File.Exists(wavPath))
             {
                 using (SoundPlayer player = new SoundPlayer(wavPath))
                 {
@@ -409,15 +460,17 @@ public partial class Form1 : Form
                 }
             }
         }
-        catch (Exception) { }
+        catch (Exception) { /* Silent fail */ }
     }
 
     // ===== ASCII ART =====
     private void DisplayAsciiArt()
     {
-        if (_rtxtChatDisplay == null || _chatBot == null) return;
-        _rtxtChatDisplay.SelectionColor = Color.Lime;
-        _rtxtChatDisplay.AppendText(_chatBot.GetAsciiArt() + "\n\n");
+        if (_txtAsciiArt == null || _chatBot == null || _asciiArtDisplayed) return;
+
+        _asciiArtDisplayed = true;
+        // ASCII art is already set in the TextBox, but we can update it if needed
+        _txtAsciiArt.Text = _chatBot.GetAsciiArt();
     }
 
     // ===== SEND MESSAGE =====
@@ -462,6 +515,7 @@ public partial class Form1 : Form
     {
         if (_rtxtChatDisplay == null) return;
         _rtxtChatDisplay.SelectionColor = Color.DodgerBlue;
+        _rtxtChatDisplay.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
         _rtxtChatDisplay.AppendText($"\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
         _rtxtChatDisplay.SelectionColor = Color.DodgerBlue;
         _rtxtChatDisplay.AppendText($"🤖 BOT: ");

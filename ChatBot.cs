@@ -47,30 +47,19 @@ public class ChatBot
         return "Hello! Welcome to the Cybersecurity Chatbot! 🤖\n\nWhat's your name?";
     }
 
-    // ===== PROFESSIONAL ASCII ART - FIXED =====
+    // ===== CLEAN ASCII ART =====
     public string GetAsciiArt()
     {
         return @"
-    ╔═══════════════════════════════════════════════════════════════════╗
-    ║                                                                   ║
-    ║          ██████╗██╗   ██╗██████╗ ███████╗██████╗                  ║
-    ║         ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗                 ║
-    ║         ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝                 ║
-    ║         ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗                 ║
-    ║         ╚██████╗   ██║   ██████╔╝███████╗██║  ██║                 ║
-    ║          ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝                 ║
-    ║                                                                   ║
-    ║          ███████╗ ██████╗ ██╗   ██╗████████╗██████╗  ██████╗ ██╗  ║
-    ║          ██╔════╝██╔═══██╗╚██╗ ██╔╝╚══██╔══╝██╔══██╗██╔═══██╗╚██╗ ║
-    ║          ███████╗██║   ██║ ╚████╔╝    ██║   ██████╔╝██║   ██║ ╚██╗║
-    ║          ╚════██║██║   ██║  ╚██╔╝     ██║   ██╔══██╗██║   ██║ ██╔╝║
-    ║          ███████║╚██████╔╝   ██║      ██║   ██║  ██║╚██████╔╝██╔╝ ║
-    ║          ╚══════╝ ╚═════╝    ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ║
-    ║                                                                   ║
-    ║                    🔐  CYBERSECURITY OUTBOX  🔐                    ║
-    ║                          Version 3.0                               ║
-    ║                                                                   ║
-    ╚═══════════════════════════════════════════════════════════════════╝";
+    ██████╗ ██╗   ██╗██████╗ ███████╗██████╗  ██████╗ ██╗   ██╗████████╗
+    ██╔═══╝ ╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗██╔═══██╗╚██╗ ██╔╝╚══██╔══╝
+    ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝██║   ██║ ╚████╔╝    ██║   
+    ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗██║   ██║  ╚██╔╝     ██║   
+    ╚██████╗   ██║   ██████╔╝███████╗██║  ██║╚██████╔╝   ██║      ██║   
+     ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝      ╚═╝   
+                                                                         
+          🔐  C Y B E R S E C U R I T Y   O U T B O X   🔐              
+                               v3.0                                      ";
     }
 
     private string ExtractTopic(string input)
@@ -88,34 +77,30 @@ public class ChatBot
     public string GetTutorial()
     {
         return @"
-╔═══════════════════════════════════════════════════════════════════╗
-║                                                                   ║
-║              📚  CYBERSECURITY OUTBOX - TUTORIAL                  ║
-║                                                                   ║
-║  🎯 STEP 1: INTRODUCE YOURSELF                                    ║
-║      Type your name when asked                                    ║
-║                                                                   ║
-║  📋 STEP 2: MANAGE TASKS                                          ║
-║      • Add:    'add task - Review privacy settings'               ║
-║      • View:   'view tasks'                                       ║
-║      • Complete: 'complete 1'                                     ║
-║      • Delete: 'delete 1'                                         ║
-║                                                                   ║
-║  🎮 STEP 3: PLAY THE QUIZ                                         ║
-║      • Start:  'start quiz'                                       ║
-║      • Answer: 'A', 'B', 'C', or 'D'                             ║
-║                                                                   ║
-║  💬 STEP 4: ASK QUESTIONS                                         ║
-║      • 'tell me about passwords'                                  ║
-║      • 'tell me about phishing'                                   ║
-║      • 'tell me more' (another tip)                               ║
-║                                                                   ║
-║  📊 STEP 5: VIEW ACTIVITY LOG                                     ║
-║      • 'show activity log'                                        ║
-║                                                                   ║
-║  ❌ EXIT: 'exit' or 'bye'                                         ║
-║                                                                   ║
-╚═══════════════════════════════════════════════════════════════════╝";
+    📚  CYBERSECURITY OUTBOX - TUTORIAL
+
+    🎯 STEP 1: INTRODUCE YOURSELF
+        Type your name when asked
+
+    📋 STEP 2: MANAGE TASKS
+        • Add:    'add task - Review privacy settings'
+        • View:   'view tasks'
+        • Complete: 'complete 1'
+        • Delete: 'delete 1'
+
+    🎮 STEP 3: PLAY THE QUIZ
+        • Start:  'start quiz'
+        • Answer: 'A', 'B', 'C', or 'D'
+
+    💬 STEP 4: ASK QUESTIONS
+        • 'tell me about passwords'
+        • 'tell me about phishing'
+        • 'tell me more' (another tip)
+
+    📊 STEP 5: VIEW ACTIVITY LOG
+        • 'show activity log'
+
+    ❌ EXIT: 'exit' or 'bye'";
     }
 
     // ===== PART 3: NEW METHODS =====
@@ -162,34 +147,30 @@ public class ChatBot
 
     private string GetHelpMessage()
     {
-        return $@"╔═══════════════════════════════════════════════════════════════════╗
-║                                                                   ║
-║  🔧 {_memoryStore.UserName}, here are ALL my features:                      ║
-║                                                                   ║
-║  📋 TASK ASSISTANT (Part 3)                                       ║
-║      • Add task:    'add task - Review privacy settings'          ║
-║      • View tasks:  'view tasks'                                  ║
-║      • Complete:    'complete 1'                                  ║
-║      • Delete:      'delete 1'                                    ║
-║                                                                   ║
-║  🎮 QUIZ GAME (Part 3)                                            ║
-║      • Start quiz:  'start quiz'                                  ║
-║      • Answer:      'A', 'B', 'C', or 'D'                        ║
-║                                                                   ║
-║  📊 ACTIVITY LOG (Part 3)                                         ║
-║      • Show log:    'show activity log'                           ║
-║                                                                   ║
-║  💬 CHAT FEATURES (Part 2)                                        ║
-║      • Ask about: passwords, phishing, privacy, scams, malware, 2FA ║
-║      • 'tell me more' - Get another tip                           ║
-║      • 'I'm interested in [topic]' - I'll remember it             ║
-║                                                                   ║
-║  📚 TUTORIAL                                                      ║
-║      • Type 'tutorial' for a step-by-step guide                   ║
-║                                                                   ║
-║  ❌ EXIT: 'exit' or 'bye'                                         ║
-║                                                                   ║
-╚═══════════════════════════════════════════════════════════════════╝";
+        return $@"🔧 {_memoryStore.UserName}, here are ALL my features:
+
+    📋 TASK ASSISTANT (Part 3)
+        • Add task:    'add task - Review privacy settings'
+        • View tasks:  'view tasks'
+        • Complete:    'complete 1'
+        • Delete:      'delete 1'
+
+    🎮 QUIZ GAME (Part 3)
+        • Start quiz:  'start quiz'
+        • Answer:      'A', 'B', 'C', or 'D'
+
+    📊 ACTIVITY LOG (Part 3)
+        • Show log:    'show activity log'
+
+    💬 CHAT FEATURES (Part 2)
+        • Ask about: passwords, phishing, privacy, scams, malware, 2FA
+        • 'tell me more' - Get another tip
+        • 'I'm interested in [topic]' - I'll remember it
+
+    📚 TUTORIAL
+        • Type 'tutorial' for a step-by-step guide
+
+    ❌ EXIT: 'exit' or 'bye'";
     }
 
     // ===== MAIN PROCESSING METHOD =====
@@ -246,7 +227,6 @@ public class ChatBot
         if (_quizManager.IsQuizActive)
         {
             string trimmed = input.Trim().ToUpper();
-            // Check if it's a valid quiz answer (A, B, C, D)
             bool isValidAnswer = false;
             foreach (var letter in new[] { "A", "B", "C", "D" })
             {
@@ -262,7 +242,6 @@ public class ChatBot
                 return _quizManager.SubmitAnswer(input);
             }
 
-            // If quiz active but not a valid answer
             return "❌ Please answer with A, B, C, or D for the quiz question!";
         }
 
