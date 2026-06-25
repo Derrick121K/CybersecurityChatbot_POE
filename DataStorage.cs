@@ -121,7 +121,7 @@ public class DataStorage
     {
         var entries = GetActivityLog(count);
         if (entries.Count == 0)
-            return "No activities logged yet.";
+            return "📊 No activities logged yet.";
 
         var result = "📊 RECENT ACTIVITIES:\n\n";
         int i = 1;
@@ -136,7 +136,6 @@ public class DataStorage
         return result;
     }
 
-    // ===== RESET METHODS (Optional) =====
     public void ClearAllData()
     {
         _data = new AppData();
