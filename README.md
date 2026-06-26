@@ -7,7 +7,7 @@
 | Detail             | Information                                             |
 | ------------------ | ------------------------------------------------------- |
 | **Name**           | Derrick Kapa                                            |
-| **Student Number** | [ADD YOUR STUDENT NUMBER]                               |
+| **Student Number** | ST10445255                               |
 | **Course**         | PROG6221 Programming 2A                                 |
 | **Assessment**     | Portfolio of Evidence                                   |
 | **Project**        | Cybersecurity Outbox                                    |
@@ -16,6 +16,8 @@
 ---
 
 ## Project Overview
+
+![Cybersecurity Outbox Screenshot](POE_screenshot1.png)
 
 **Cybersecurity Outbox** is a C# Windows Forms chatbot application created for the PROG6221 Programming 2A Portfolio of Evidence.
 
@@ -238,7 +240,7 @@ You can also open `CybersecurityChatbot.sln` in Visual Studio and press `F5` to 
 
 ## Screenshot
 
-![Cybersecurity Outbox Screenshot](screenshot.png)
+![Cybersecurity Outbox Screenshot](POE_screenshot2.png)
 
 ---
 
