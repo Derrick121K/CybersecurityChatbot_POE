@@ -5,3 +5,4 @@ obj/
 *.suo
 *.userprefs
 .DS_Store
+app_data.json
