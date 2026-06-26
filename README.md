@@ -7,7 +7,7 @@
 | Detail             | Information                                             |
 | ------------------ | ------------------------------------------------------- |
 | **Name**           | Derrick Kapa                                            |
-| **Student Number** | ST10445255                               |
+| **Student Number** | ST10445255                                              |
 | **Course**         | PROG6221 Programming 2A                                 |
 | **Assessment**     | Portfolio of Evidence                                   |
 | **Project**        | Cybersecurity Outbox                                    |
@@ -21,7 +21,7 @@
 
 **Cybersecurity Outbox** is a C# Windows Forms chatbot application created for the PROG6221 Programming 2A Portfolio of Evidence.
 
-The application teaches users about important cybersecurity topics through a friendly chatbot interface. It includes keyword recognition, random responses, conversation memory, sentiment detection, task management, a cybersecurity quiz, NLP simulation, activity logging, and JSON-based storage.
+The application teaches users about important cybersecurity topics through an interactive chatbot interface. It includes keyword recognition, random responses, conversation memory, sentiment detection, task management, a cybersecurity quiz, NLP simulation, activity logging, and JSON-based storage.
 
 This project combines the requirements from **Part 1, Part 2, and Part 3** into one complete application.
 
@@ -50,7 +50,7 @@ This project combines the requirements from **Part 1, Part 2, and Part 3** into 
 | **Memory and Recall**   | Remembers the user's name and favourite cybersecurity topic                                |
 | **Sentiment Detection** | Detects moods such as worried, curious, frustrated, and happy                              |
 | **Error Handling**      | Handles empty input, unknown messages, and invalid commands                                |
-| **Code Optimization**   | Uses separate classes to keep the program organized and maintainable                       |
+| **Code Optimization**   | Uses separate classes to keep the program organised and maintainable                       |
 
 ---
 
@@ -142,7 +142,8 @@ CybersecurityChatbot_POE/
 ├── SentimentDetector.cs
 ├── TaskManager.cs
 ├── greeting.wav
-├── screenshot.png
+├── POE_screenshot1.png
+├── POE_screenshot2.png
 ├── README.md
 └── .gitignore
 ```
@@ -294,7 +295,7 @@ https://github.com/Derrick121K/CybersecurityChatbot_POE
 | Memory and recall   | Complete |
 | Sentiment detection | Complete |
 | Error handling      | Complete |
-| Code optimization   | Complete |
+| Code optimisation   | Complete |
 | GitHub repository   | Complete |
 | GitHub Actions      | Complete |
 | Video demonstration | Complete |
